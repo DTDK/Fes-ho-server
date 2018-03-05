@@ -15,10 +15,8 @@ const auth = require('./routes/auth');
 
 const app = express();
 
-
-// DB
 mongoose.Promise = Promise;
-mongoose.connect(mongoose.connect(process.env.MONGODB_URI), {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
 });
