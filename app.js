@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -17,7 +18,7 @@ const app = express();
 
 // DB
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/fes-ho-db', {
+mongoose.connect(mongoose.connect(process.env.MONGODB_URI), {
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
 });
@@ -25,7 +26,7 @@ mongoose.connect('mongodb://localhost/fes-ho-db', {
 // middlewares
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:4200']
+  origin: [process.env.CLIENT_URL]
 }));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
