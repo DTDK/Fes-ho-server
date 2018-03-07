@@ -10,7 +10,11 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: [true, "Password is required"]
-  }
+  },
+  lists: [{
+    type: Schema.ObjectId,
+    ref: 'List'
+  }]
 });
 
 UserSchema.methods.generateHash = function (password) {
